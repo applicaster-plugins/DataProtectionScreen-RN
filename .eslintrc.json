@@ -10,7 +10,8 @@
     "class-methods-use-this": "off",
     "camelcase": "off",
     "no-nested-ternary": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "consistent-return": "warn"
   },
   "parserOptions": {
     "ecmaVersion": 9,
