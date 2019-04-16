@@ -1,12 +1,81 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View, WebView } from 'react-native';
 import SwitchPanel from './components/SwitchPanel';
+import { getPluginConfig } from './util/pluginConfigModule';
+import { getAnalyticsStatus, setAnalyticsStatus } from './util/analyticsModule';
 
-const App = () => (
-  <View style={{ flex: 1 }}>
-    <Text>Hello World</Text>
-    <SwitchPanel />
-  </View>
-);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      initialLoad: true,
+      analyticsEnabled: null,
+      generalConfig: {
+        backgroundViewColor: null,
+        buttonTrackColor: null,
+        switchPanelColor: null,
+        switchPanelText: null,
+        url: null
+      }
+    };
+    this.getInitialData();
+    this.handleSwitchChange = this.handleSwitchChange.bind(this);
+  }
+
+  async getInitialData() {
+    try {
+      const generalConfig = await getPluginConfig();
+      const analyticsEnabled = await getAnalyticsStatus();
+      this.setState({
+        initialLoad: false,
+        generalConfig,
+        analyticsEnabled
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async handleSwitchChange(newAnalyticsStatus) {
+    try {
+      await setAnalyticsStatus(newAnalyticsStatus);
+      this.setState({ analyticsEnabled: newAnalyticsStatus });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  render() {
+    const {
+      analyticsEnabled,
+      initialLoad,
+      generalConfig: {
+        switchPanelColor,
+        buttonTrackColor,
+        url: uri,
+        switchPanelText
+      }
+    } = this.state;
+
+    if (initialLoad) {
+      return null;
+    }
+
+    return (
+      <View style={{ flex: 1 }}>
+        <SwitchPanel
+          {...{
+            switchEnabled: analyticsEnabled,
+            switchPanelColor,
+            buttonTrackColor,
+            switchPanelText,
+            handleSwitchChange: this.handleSwitchChange
+          }}
+        />
+        <WebView source={{ uri }} />
+      </View>
+    );
+  }
+}
 
 export default App;

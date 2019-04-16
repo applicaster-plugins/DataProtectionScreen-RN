@@ -1,26 +1,36 @@
 import React, { Component } from 'react';
-import { View, Switch } from 'react-native';
 import PropTypes from 'prop-types';
+import { View, Switch, StyleSheet, Text } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    height: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 8
+  }
+});
 
 class SwitchPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      switchEnabled: props.switchEnabled
-    };
-  }
-
-  handleSwitchPress(newSwitchState) {
-    this.setState({ switchEnabled: newSwitchState });
+  onPress(newSwitchState) {
+    this.props.handleSwitchChange(newSwitchState);
   }
 
   render() {
-    const { switchEnabled } = this.state;
+    const {
+      switchEnabled,
+      switchPanelColor,
+      buttonTrackColor: trackColor
+    } = this.props;
+
     return (
-      <View style={{ flex: 1 }}>
+      <View style={[styles.container, { backgroundColor: switchPanelColor }]}>
+        <Text>Tracking</Text>
         <Switch
-          {...{ value: switchEnabled }}
-          onValueChange={() => this.handleSwitchPress(!switchEnabled)}
+          {...{ value: switchEnabled, trackColor }}
+          onValueChange={() => this.onPress(!switchEnabled)}
         />
       </View>
     );
@@ -28,7 +38,11 @@ class SwitchPanel extends Component {
 }
 
 SwitchPanel.propTypes = {
-  switchEnabled: PropTypes.bool
+  switchEnabled: PropTypes.bool,
+  switchPanelColor: PropTypes.string,
+  buttonTrackColor: PropTypes.string,
+  switchPanelText: PropTypes.string,
+  handleSwitchChange: PropTypes.func
 };
 
 SwitchPanel.defaultProps = {
