@@ -22,12 +22,13 @@ class SwitchPanel extends Component {
     const {
       switchEnabled,
       switchPanelColor,
+      switchPanelText,
       buttonTrackColor: trackColor
     } = this.props;
 
     return (
       <View style={[styles.container, { backgroundColor: switchPanelColor }]}>
-        <Text>Tracking</Text>
+        <Text>{switchPanelText}</Text>
         <Switch
           {...{ value: switchEnabled, trackColor }}
           onValueChange={() => this.onPress(!switchEnabled)}

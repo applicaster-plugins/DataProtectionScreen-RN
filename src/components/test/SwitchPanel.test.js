@@ -36,4 +36,13 @@ describe('SwitchPanel', () => {
 
     expect(handleSwitchChange).toBeCalledWith(true);
   });
+
+  it('should display text passed in switchPanelText prop', () => {
+    const component = create(
+      <SwitchPanel {...{ switchPanelText: 'fooBar' }} />
+    );
+    const textComponent = component.root.findByType('Text');
+
+    expect(textComponent.props.children).toBe('fooBar');
+  });
 });
