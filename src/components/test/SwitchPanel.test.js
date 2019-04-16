@@ -27,15 +27,13 @@ describe('SwitchPanel', () => {
     expect(switchValue).toBeTruthy();
   });
 
-  // it('changes Switch state after pressing it', () => {
-  //   const component = create(<SwitchPanel />);
-  //   const instance = component.getInstance();
-  //   const switchComponent = component.root.findByType(Switch);
+  it('calls parent handleSwitchChange on switchValue change', () => {
+    const handleSwitchChange = jest.fn();
+    const component = create(<SwitchPanel {...{ handleSwitchChange }} />);
+    const instance = component.getInstance();
 
-  //   const switchValueBeforeClick = switchComponent.props.value;
-  //   instance.onPress(!switchValueBeforeClick);
-  //   const switchValueAfterClick = switchComponent.props.value;
+    instance.onPress(true);
 
-  //   expect(switchValueBeforeClick).toBe(!switchValueAfterClick);
-  // });
+    expect(handleSwitchChange).toBeCalledWith(true);
+  });
 });
