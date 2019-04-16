@@ -23,8 +23,7 @@
     "deploy:android": "npm run build:android && aws s3 sync tmp/build/android s3://assets-production.applicaster.com/zapp/react-native-bundles/DataProtectionScreen-RN/0_50_4/android --region us-east-1",
     "deploy:staging": "npm run deploy:staging:ios && npm run deploy:staging:android",
     "deploy:staging:ios": "npm run build:staging:ios && aws s3 sync tmp/build/ios s3://assets-staging.applicaster.com/zapp/react-native-bundles/staging/DataProtectionScreen-RN/0_50_4/ios --region us-east-1",
-    "deploy:staging:android": "npm run build:staging:android && aws s3 sync tmp/build/android s3://assets-staging.applicaster.com/zapp/react-native-bundles/DataProtectionScreen-RN/0_50_4/android --region us-east-1",
-    "storybook": "storybook start -p 7007"
+    "deploy:staging:android": "npm run build:staging:android && aws s3 sync tmp/build/android s3://assets-staging.applicaster.com/zapp/react-native-bundles/DataProtectionScreen-RN/0_50_4/android --region us-east-1"
   },
   "repository": {
     "type": "git",

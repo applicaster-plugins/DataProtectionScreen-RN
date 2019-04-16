@@ -25,9 +25,10 @@
   "project_dependencies": [],
   "custom_configuration_fields": [
     {
-      "type": "text",
       "key": "backgroundViewColor",
-      "tooltip_text": "Background color when the view is loading"
+      "tooltip_text": "Background color when the view is loading",
+      "initial_value": "#ffffffff",
+      "type": "color_picker"
     }
   ],
   "screen": true,
