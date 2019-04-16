@@ -6,39 +6,58 @@
   },
   "dependency_repository_url": [],
   "platform": "android",
-  "author_name": "Ritchie Comley",
-  "author_email": "r.comley@applicaster.com",
-  "manifest_version": "0.0.3",
-  "name": "Sports Fixtures",
-  "description": "React Native sports fixtures component",
+  "author_name": "Pawel Buderaski",
+  "author_email": "p.buderaski@applicaster.com",
+  "manifest_version": "0.1.0",
+  "name": "DataProtectionScreen-RN",
+  "description": "Plugin to display data protection user config and privacy text",
   "type": "general",
-  "identifier": "SportFixtures-fullscreen",
-  "whitelisted_account_ids": [
-    "59784f3d2a141d000d587f77",
-    "5b55be2e64f041000ceaee24"
-  ],
-  "min_zapp_sdk": "5.5.0",
+  "identifier": "DataProtectionScreen-RN",
+  "whitelisted_account_ids": ["5c360f8a6b857000082d0e71"],
+  "min_zapp_sdk": "10.0.0",
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
+  "ui_builder_support": true,
   "react_native": true,
-  "react_bundle_url": "https://assets-production.applicaster.com/zapp/react-native-bundles/APSportFixtures-RN/0_50_4/android/index.android.bundle.js",
+  "react_bundle_url": "https://assets-production.applicaster.com/zapp/react-native-bundles/DataProtectionScreen-RN/android/index.android.bundle.js",
   "extra_dependencies": [],
   "npm_dependencies": [],
   "project_dependencies": [],
   "custom_configuration_fields": [
     {
-      "key": "tap_threshold",
       "type": "text",
-      "tooltip_text": "How long before a tap is recognised as a drag in (ms)",
-      "default": "150"
-    },
-    {
-      "type": "colorpicker",
       "key": "backgroundViewColor",
       "tooltip_text": "Background color when the view is loading"
     }
   ],
-  "ui_builder_support": true,
-  "dependency_name": "@applicaster/apsportfixtures-rn",
-  "dependency_version": "0.0.3"
+  "screen": true,
+  "data": {
+    "fields": [
+      {
+        "key": "url",
+        "tooltip_text": "URL to data protection website",
+        "type": "text_input",
+        "placeholder": "Enter URL..."
+      },
+      {
+        "key": "Switch panel text",
+        "tooltip_text": "Text to display next to the switch button",
+        "initial_value": "Tracking",
+        "type": "text_input",
+        "placeholder": "Enter text..."
+      },
+      {
+        "key": "button_track_color",
+        "label": "Button track color",
+        "initial_value": "#ffffffff",
+        "type": "color_picker"
+      },
+      {
+        "key": "switch_panel_color",
+        "label": "Switch panel background color",
+        "initial_value": "#ffffffff",
+        "type": "color_picker"
+      }
+    ]
+  }
 }
