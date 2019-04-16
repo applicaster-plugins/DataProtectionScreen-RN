@@ -25,40 +25,41 @@
   "project_dependencies": [],
   "custom_configuration_fields": [
     {
+      "label": "URL",
+      "key": "url",
+      "tooltip_text": "URL to data protection website",
+      "type": "text",
+      "placeholder": "Enter URL..."
+    },
+    {
+      "label": "Switch panel text",
+      "key": "switchPanelText",
+      "tooltip_text": "Text to display next to the switch button",
+      "initial_value": "Tracking",
+      "type": "text",
+      "placeholder": "Enter text..."
+    },
+    {
+      "label": "Switch panel color",
+      "key": "switchPanelColor",
+      "label": "Switch panel background color",
+      "initial_value": "#ffffff",
+      "type": "text"
+    },
+    {
+      "label": "Button track color",
+      "key": "buttonTrackColor",
+      "label": "Button track color",
+      "initial_value": "#ffffff",
+      "type": "text"
+    },
+    {
+      "label": "Background color",
       "key": "backgroundViewColor",
       "tooltip_text": "Background color when the view is loading",
-      "initial_value": "#ffffffff",
-      "type": "color_picker"
+      "initial_value": "#ffffff",
+      "type": "text"
     }
   ],
-  "screen": true,
-  "data": {
-    "fields": [
-      {
-        "key": "url",
-        "tooltip_text": "URL to data protection website",
-        "type": "text_input",
-        "placeholder": "Enter URL..."
-      },
-      {
-        "key": "Switch panel text",
-        "tooltip_text": "Text to display next to the switch button",
-        "initial_value": "Tracking",
-        "type": "text_input",
-        "placeholder": "Enter text..."
-      },
-      {
-        "key": "button_track_color",
-        "label": "Button track color",
-        "initial_value": "#ffffffff",
-        "type": "color_picker"
-      },
-      {
-        "key": "switch_panel_color",
-        "label": "Switch panel background color",
-        "initial_value": "#ffffffff",
-        "type": "color_picker"
-      }
-    ]
-  }
+  "screen": true
 }
