@@ -1,6 +1,7 @@
 import React from 'react';
 import { NativeModules, Switch } from 'react-native';
 import { create } from 'react-test-renderer';
+import { keys, pick, compose, omit } from 'ramda';
 import App from '../App';
 import SwitchPanel from '../components/SwitchPanel';
 
@@ -92,5 +93,23 @@ describe('App component', () => {
     await instance.handleSwitchChange(!switchInitialStatus);
 
     expect(switchComponent.props.value).toBe(!switchInitialStatus);
+  });
+
+  it('passes styles config to the switchPanel', async () => {
+    const { configuration } = NativeModules.ZappPlugin;
+    const component = create(<App />);
+    const instance = component.getInstance();
+    await instance.getInitialData();
+    const switchPanelComponent = component.root.findByType(SwitchPanel);
+    const configKeys = keys(configuration);
+    const unusedConfigFields = ['url', 'backgroundViewColor'];
+    const switchPanelConfigProps = compose(
+      omit(unusedConfigFields),
+      pick(configKeys)
+    )(switchPanelComponent.props);
+
+    expect(switchPanelConfigProps).toEqual(
+      omit(unusedConfigFields, configuration)
+    );
   });
 });
