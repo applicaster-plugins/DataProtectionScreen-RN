@@ -27,16 +27,8 @@ class SwitchPanel extends Component {
       switchPanelTextColor,
       buttonTrackColor: trackColor
     } = this.props;
-
     return (
-      <View
-        style={{
-          ...styles.container,
-          ...{
-            backgroundColor: switchPanelColor
-          }
-        }}
-      >
+      <View style={[styles.container, { backgroundColor: switchPanelColor }]}>
         <Text
           style={{
             fontSize: Number(switchPanelTextSize),

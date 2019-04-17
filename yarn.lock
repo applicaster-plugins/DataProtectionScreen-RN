@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@applicaster/london-rn-components@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@applicaster/london-rn-components/-/london-rn-components-1.11.1.tgz#f1964e374d609c84d0035c5639a0b57cfbeef09f"
+  dependencies:
+    react-test-renderer "^16.6.3"
+
 "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2":
   version "7.4.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.3.tgz#79888e452034223ad9609187a0ad1fe0d2ad4bdc"
@@ -6936,7 +6942,7 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
-react-test-renderer@^16.8.6:
+react-test-renderer@^16.6.3, react-test-renderer@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.8.6.tgz#188d8029b8c39c786f998aa3efd3ffe7642d5ba1"
   dependencies:

@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/applicaster/DataProtectionScreen-RN#readme",
   "dependencies": {
+    "@applicaster/london-rn-components": "^1.11.1",
     "axios": "^0.17.1",
     "eslint-config-prettier": "^4.1.0",
     "moment": "^2.20.1",

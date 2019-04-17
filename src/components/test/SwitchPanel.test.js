@@ -1,6 +1,5 @@
 import React from 'react';
-import { reduce } from 'ramda';
-import { Switch } from 'react-native';
+import { Switch, StyleSheet } from 'react-native';
 import { create } from 'react-test-renderer';
 import SwitchPanel from '../SwitchPanel';
 
@@ -59,8 +58,8 @@ describe('SwitchPanel', () => {
     const switchPanelColor = 'red';
     const component = create(<SwitchPanel {...{ switchPanelColor }} />);
     const viewContainer = component.root.findByType('View');
-
-    expect(viewContainer.props.style.backgroundColor).toBe(switchPanelColor);
+    const viewContainerStyle = StyleSheet.flatten(viewContainer.props.style);
+    expect(viewContainerStyle.backgroundColor).toBe(switchPanelColor);
   });
 
   it('changes text size if switchPanelTextSize provided', () => {

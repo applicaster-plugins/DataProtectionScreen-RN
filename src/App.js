@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, WebView } from 'react-native';
+import { ErrorBoundary } from '@applicaster/london-rn-components';
 import SwitchPanel from './components/SwitchPanel';
 import { getPluginConfig } from './util/pluginConfigModule';
 import { getAnalyticsStatus, setAnalyticsStatus } from './util/analyticsModule';
@@ -66,20 +67,22 @@ class App extends Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
-        <SwitchPanel
-          {...{
-            switchEnabled: analyticsEnabled,
-            switchPanelColor,
-            buttonTrackColor,
-            switchPanelText,
-            switchPanelTextSize,
-            switchPanelTextColor,
-            handleSwitchChange: this.handleSwitchChange
-          }}
-        />
-        <WebView source={{ uri }} />
-      </View>
+      <ErrorBoundary>
+        <View style={{ flex: 1 }}>
+          <SwitchPanel
+            {...{
+              switchEnabled: analyticsEnabled,
+              switchPanelColor,
+              buttonTrackColor,
+              switchPanelText,
+              switchPanelTextSize,
+              switchPanelTextColor,
+              handleSwitchChange: this.handleSwitchChange
+            }}
+          />
+          <WebView source={{ uri }} />
+        </View>
+      </ErrorBoundary>
     );
   }
 }
