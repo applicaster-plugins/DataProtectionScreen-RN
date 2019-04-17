@@ -9,6 +9,8 @@ jest.mock('NativeModules', () => {
         backgroundViewColor: '#ffffff',
         buttonTrackColor: '#ffffff',
         switchPanelColor: '#ffffff',
+        switchPanelTextSize: '12',
+        switchPanelTextColor: '#000000',
         switchPanelText: 'Tracking',
         url: 'https://google.com'
       }

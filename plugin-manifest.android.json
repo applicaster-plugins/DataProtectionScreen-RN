@@ -40,6 +40,20 @@
       "placeholder": "Enter text..."
     },
     {
+      "label": "Switch panel text color",
+      "key": "switchPanelTextColor",
+      "label": "Switch panel text color",
+      "initial_value": "#000000",
+      "type": "text"
+    },
+    {
+      "label": "Switch panel size",
+      "key": "switchPanelTextSize",
+      "label": "Switch panel text size",
+      "initial_value": "12",
+      "type": "text"
+    },
+    {
       "label": "Switch panel color",
       "key": "switchPanelColor",
       "label": "Switch panel background color",

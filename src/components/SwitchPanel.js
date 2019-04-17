@@ -23,6 +23,8 @@ class SwitchPanel extends Component {
       switchEnabled,
       switchPanelColor,
       switchPanelText,
+      switchPanelTextSize,
+      switchPanelTextColor,
       buttonTrackColor: trackColor
     } = this.props;
 
@@ -43,6 +45,8 @@ SwitchPanel.propTypes = {
   switchPanelColor: PropTypes.string,
   buttonTrackColor: PropTypes.string,
   switchPanelText: PropTypes.string,
+  switchPanelTextSize: PropTypes.string,
+  switchPanelTextColor: PropTypes.string,
   handleSwitchChange: PropTypes.func
 };
 

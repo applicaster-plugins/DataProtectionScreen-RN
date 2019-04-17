@@ -14,6 +14,8 @@ class App extends Component {
         backgroundViewColor: null,
         buttonTrackColor: null,
         switchPanelColor: null,
+        switchPanelTextSize: null,
+        switchPanelTextColor: null,
         switchPanelText: null,
         url: null
       }
@@ -52,6 +54,8 @@ class App extends Component {
       generalConfig: {
         switchPanelColor,
         buttonTrackColor,
+        switchPanelTextSize,
+        switchPanelTextColor,
         url: uri,
         switchPanelText
       }
@@ -69,6 +73,8 @@ class App extends Component {
             switchPanelColor,
             buttonTrackColor,
             switchPanelText,
+            switchPanelTextSize,
+            switchPanelTextColor,
             handleSwitchChange: this.handleSwitchChange
           }}
         />
