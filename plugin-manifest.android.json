@@ -13,7 +13,13 @@
   "description": "Plugin to display data protection user config and privacy text",
   "type": "general",
   "identifier": "DataProtectionScreen-RN",
-  "whitelisted_account_ids": ["5c360f8a6b857000082d0e71"],
+  "whitelisted_account_ids": [
+    "5c360f8a6b857000082d0e71",
+    "5bf421e336917d0008a9fa49",
+    "5c6b1f7835db1f000d51503d",
+    "5bf421e336917d0008a9fa49"
+  ],
+
   "min_zapp_sdk": "7.0.0",
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
