@@ -29,8 +29,22 @@ class SwitchPanel extends Component {
     } = this.props;
 
     return (
-      <View style={[styles.container, { backgroundColor: switchPanelColor }]}>
-        <Text>{switchPanelText}</Text>
+      <View
+        style={{
+          ...styles.container,
+          ...{
+            backgroundColor: switchPanelColor
+          }
+        }}
+      >
+        <Text
+          style={{
+            fontSize: Number(switchPanelTextSize),
+            color: switchPanelTextColor
+          }}
+        >
+          {switchPanelText}
+        </Text>
         <Switch
           {...{ value: switchEnabled, trackColor }}
           onValueChange={() => this.onPress(!switchEnabled)}

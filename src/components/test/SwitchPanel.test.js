@@ -1,4 +1,5 @@
 import React from 'react';
+import { reduce } from 'ramda';
 import { Switch } from 'react-native';
 import { create } from 'react-test-renderer';
 import SwitchPanel from '../SwitchPanel';
@@ -44,5 +45,37 @@ describe('SwitchPanel', () => {
     const textComponent = component.root.findByType('Text');
 
     expect(textComponent.props.children).toBe('fooBar');
+  });
+
+  it('changes switch track color if buttonTrackColor provided', () => {
+    const buttonTrackColor = 'red';
+    const component = create(<SwitchPanel {...{ buttonTrackColor }} />);
+    const switchComponent = component.root.findByType(Switch);
+
+    expect(switchComponent.props.trackColor).toBe(buttonTrackColor);
+  });
+
+  it('changes view background color if switchPanelColor provided', () => {
+    const switchPanelColor = 'red';
+    const component = create(<SwitchPanel {...{ switchPanelColor }} />);
+    const viewContainer = component.root.findByType('View');
+
+    expect(viewContainer.props.style.backgroundColor).toBe(switchPanelColor);
+  });
+
+  it('changes text size if switchPanelTextSize provided', () => {
+    const switchPanelTextSize = '18';
+    const component = create(<SwitchPanel {...{ switchPanelTextSize }} />);
+    const textComponent = component.root.findByType('Text');
+    expect(String(textComponent.props.style.fontSize)).toBe(
+      switchPanelTextSize
+    );
+  });
+
+  it('changes text color if switchPanelTextColor provided', () => {
+    const switchPanelTextColor = 'red';
+    const component = create(<SwitchPanel {...{ switchPanelTextColor }} />);
+    const textComponent = component.root.findByType('Text');
+    expect(textComponent.props.style.color).toBe(switchPanelTextColor);
   });
 });
