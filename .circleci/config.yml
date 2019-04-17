@@ -52,7 +52,6 @@ jobs:
           command: npm run test -- --coverage
 
       - persist_to_workspace:
-          root: ~/DataProtectionScreen-RN
           <<: *persisted_folders
 
       - run:
