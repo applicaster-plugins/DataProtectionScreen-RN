@@ -71,11 +71,11 @@ class App extends Component {
         <View style={{ flex: 1 }}>
           <SwitchPanel
             {...{
-              switchEnabled: Boolean(analyticsEnabled),
+              switchEnabled: analyticsEnabled,
               switchPanelColor,
               buttonTrackColor,
               switchPanelText,
-              switchPanelTextSize,
+              switchPanelTextSize: String(switchPanelTextSize),
               switchPanelTextColor,
               handleSwitchChange: this.handleSwitchChange
             }}
