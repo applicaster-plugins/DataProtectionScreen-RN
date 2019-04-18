@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Switch, StyleSheet, Text } from 'react-native';
+import { View, Switch, StyleSheet, Text, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +35,11 @@ class SwitchPanel extends Component {
         <Text
           style={{
             fontSize: Number(switchPanelTextSize),
-            color: switchPanelTextColor
+            color: switchPanelTextColor,
+            fontFamily: Platform.select({
+              ios: switchPanelIosFont,
+              android: switchPanelAndroidFont
+            })
           }}
         >
           {switchPanelText}
@@ -63,7 +67,9 @@ SwitchPanel.propTypes = {
   handleSwitchChange: PropTypes.func,
   onTintColor: PropTypes.string,
   tintColor: PropTypes.string,
-  thumbTintColor: PropTypes.string
+  thumbTintColor: PropTypes.string,
+  switchPanelIosFont: PropTypes.string,
+  switchPanelAndroidFont: PropTypes.string
 };
 
 SwitchPanel.defaultProps = {
