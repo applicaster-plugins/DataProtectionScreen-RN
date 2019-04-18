@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, WebView } from 'react-native';
+import { reverse } from 'ramda';
 import { ErrorBoundary } from '@applicaster/london-rn-components';
 import SwitchPanel from './components/SwitchPanel';
 import { getPluginConfig } from './util/pluginConfigModule';
 import { getAnalyticsStatus, setAnalyticsStatus } from './util/analyticsModule';
+import { conditionalReverse } from './util/general';
 
 class App extends Component {
   constructor(props) {
@@ -78,22 +80,25 @@ class App extends Component {
     return (
       <ErrorBoundary>
         <View style={{ flex: 1 }}>
-          <SwitchPanel
-            {...{
-              switchEnabled: analyticsEnabled,
-              switchPanelColor,
-              switchPanelText,
-              switchPanelIosFont,
-              switchPanelAndroidFont,
-              onTintColor,
-              tintColor,
-              thumbTintColor,
-              switchPanelTextSize,
-              switchPanelTextColor,
-              handleSwitchChange: this.handleSwitchChange
-            }}
-          />
-          <WebView source={{ uri }} />
+          {conditionalReverse(switchPanelPosition === 'top', [
+            <SwitchPanel
+              key="1"
+              {...{
+                switchEnabled: analyticsEnabled,
+                switchPanelColor,
+                switchPanelText,
+                switchPanelIosFont,
+                switchPanelAndroidFont,
+                onTintColor,
+                tintColor,
+                thumbTintColor,
+                switchPanelTextSize,
+                switchPanelTextColor,
+                handleSwitchChange: this.handleSwitchChange
+              }}
+            />,
+            <WebView source={{ uri }} key={2} />
+          ])}
         </View>
       </ErrorBoundary>
     );
