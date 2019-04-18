@@ -4,7 +4,6 @@ import { View, Switch, StyleSheet, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    height: 48,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -20,12 +19,17 @@ class SwitchPanel extends Component {
 
   render() {
     const {
-      switchEnabled,
       switchPanelColor,
       switchPanelText,
+      switchPanelPosition,
+      switchPanelIosFont,
+      switchPanelAndroidFont,
+      onTintColor,
+      tintColor,
+      thumbTintColor,
       switchPanelTextSize,
       switchPanelTextColor,
-      buttonTrackColor: trackColor
+      switchEnabled
     } = this.props;
     return (
       <View style={[styles.container, { backgroundColor: switchPanelColor }]}>
@@ -38,7 +42,12 @@ class SwitchPanel extends Component {
           {switchPanelText}
         </Text>
         <Switch
-          {...{ value: switchEnabled, trackColor }}
+          {...{
+            value: switchEnabled,
+            onTintColor,
+            thumbTintColor,
+            tintColor
+          }}
           onValueChange={() => this.onPress(!switchEnabled)}
         />
       </View>
@@ -49,11 +58,13 @@ class SwitchPanel extends Component {
 SwitchPanel.propTypes = {
   switchEnabled: PropTypes.bool,
   switchPanelColor: PropTypes.string,
-  buttonTrackColor: PropTypes.string,
   switchPanelText: PropTypes.string,
   switchPanelTextSize: PropTypes.string,
   switchPanelTextColor: PropTypes.string,
-  handleSwitchChange: PropTypes.func
+  handleSwitchChange: PropTypes.func,
+  onTintColor: PropTypes.string,
+  tintColor: PropTypes.string,
+  thumbTintColor: PropTypes.string
 };
 
 SwitchPanel.defaultProps = {

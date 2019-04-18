@@ -1,4 +1,7 @@
-import { NativeModules } from 'react-native';
+import { path } from 'ramda';
 
-export const getPluginConfig = (pluginId = 'DataProtectionScreen-RN') =>
-  NativeModules.ZappPlugin.getConfiguration(pluginId);
+export const getPluginConfig = path([
+  'extra_props',
+  'uibuilder_screen_model',
+  'data'
+]);

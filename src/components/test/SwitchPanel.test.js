@@ -46,12 +46,28 @@ describe('SwitchPanel', () => {
     expect(textComponent.props.children).toBe('fooBar');
   });
 
-  it('changes switch track color if buttonTrackColor provided', () => {
-    const buttonTrackColor = 'red';
-    const component = create(<SwitchPanel {...{ buttonTrackColor }} />);
+  it('changes switch on Tint Color when onTintColor is provided', () => {
+    const onTintColor = 'red';
+    const component = create(<SwitchPanel {...{ onTintColor }} />);
     const switchComponent = component.root.findByType(Switch);
 
-    expect(switchComponent.props.trackColor).toBe(buttonTrackColor);
+    expect(switchComponent.props.onTintColor).toBe(onTintColor);
+  });
+
+  it('changes switch thumb Tint Color when thumbTintColor is provided', () => {
+    const thumbTintColor = 'red';
+    const component = create(<SwitchPanel {...{ thumbTintColor }} />);
+    const switchComponent = component.root.findByType(Switch);
+
+    expect(switchComponent.props.thumbTintColor).toBe(thumbTintColor);
+  });
+
+  it('changes switch Tint Color when tintColor is provided', () => {
+    const tintColor = 'red';
+    const component = create(<SwitchPanel {...{ tintColor }} />);
+    const switchComponent = component.root.findByType(Switch);
+
+    expect(switchComponent.props.tintColor).toBe(tintColor);
   });
 
   it('changes view background color if switchPanelColor provided', () => {

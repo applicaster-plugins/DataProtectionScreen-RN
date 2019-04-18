@@ -12,13 +12,17 @@ class App extends Component {
       initialLoad: true,
       analyticsEnabled: null,
       generalConfig: {
-        backgroundViewColor: null,
-        buttonTrackColor: null,
+        url: null,
+        switchPanelPosition: null,
         switchPanelColor: null,
-        switchPanelTextSize: null,
-        switchPanelTextColor: null,
         switchPanelText: null,
-        url: null
+        switchPanelTextColor: null,
+        switchPanelTextSize: null,
+        switchPanelIosFont: null,
+        switchPanelAndroidFont: null,
+        onTintColor: null,
+        tintColor: null,
+        thumbTintColor: null
       }
     };
     this.getInitialData();
@@ -27,7 +31,7 @@ class App extends Component {
 
   async getInitialData() {
     try {
-      const generalConfig = await getPluginConfig();
+      const generalConfig = getPluginConfig(this.props);
       const analyticsEnabled = await getAnalyticsStatus();
       this.setState({
         initialLoad: false,
@@ -53,12 +57,17 @@ class App extends Component {
       analyticsEnabled,
       initialLoad,
       generalConfig: {
-        switchPanelColor,
-        buttonTrackColor,
-        switchPanelTextSize,
-        switchPanelTextColor,
         url: uri,
-        switchPanelText
+        switchPanelPosition,
+        switchPanelColor,
+        switchPanelText,
+        switchPanelTextColor,
+        switchPanelTextSize,
+        switchPanelIosFont,
+        switchPanelAndroidFont,
+        onTintColor,
+        tintColor,
+        thumbTintColor
       }
     } = this.state;
 
@@ -73,9 +82,14 @@ class App extends Component {
             {...{
               switchEnabled: analyticsEnabled,
               switchPanelColor,
-              buttonTrackColor,
               switchPanelText,
-              switchPanelTextSize: String(switchPanelTextSize),
+              switchPanelPosition,
+              switchPanelIosFont,
+              switchPanelAndroidFont,
+              onTintColor,
+              tintColor,
+              thumbTintColor,
+              switchPanelTextSize,
               switchPanelTextColor,
               handleSwitchChange: this.handleSwitchChange
             }}

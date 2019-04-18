@@ -12,21 +12,26 @@ jest.mock('NativeModules', () => {
     ZPReactNativeBridgeListener: {
       postEvent: jest.fn(),
       status: true
-    },
-    ZappPlugin: {
-      getConfiguration: jest.fn(),
-      configuration: {
-        backgroundViewColor: '#ffffff',
-        buttonTrackColor: '#ffffff',
-        switchPanelColor: '#ffffff',
-        switchPanelTextSize: '12',
-        switchPanelTextColor: '#000000',
-        switchPanelText: 'Tracking',
-        url: 'https://google.com'
-      }
     }
   };
 });
+const extra_props = {
+  uibuilder_screen_model: {
+    data: {
+      switchPanelColor: '#ffffff',
+      switchPanelTextSize: '12',
+      switchPanelTextColor: '#000000',
+      switchPanelText: 'Tracking',
+      url: 'https://google.com',
+      switchPanelPosition: 'top',
+      switchPanelIosFont: 'iosFont',
+      switchPanelAndroidFont: 'AndroidFont',
+      onTintColor: 'red',
+      tintColor: 'green',
+      thumbTintColor: 'blue'
+    }
+  }
+};
 
 NativeModules.ZPReactNativeBridgeListener.postEvent.mockImplementation(
   (event, { analyticsEnabled }, callback) => {
@@ -45,17 +50,6 @@ NativeModules.ZPReactNativeBridgeListener.postEvent.mockImplementation(
   }
 );
 
-NativeModules.ZappPlugin.getConfiguration.mockImplementation(
-  pluginId =>
-    new Promise((resolve, reject) => {
-      if (pluginId === 'DataProtectionScreen-RN') {
-        resolve(NativeModules.ZappPlugin.configuration);
-      }
-
-      reject(new Error('error'));
-    })
-);
-
 describe('App component', () => {
   it('should return null on initial render', () => {
     const component = create(<App />);
@@ -64,7 +58,7 @@ describe('App component', () => {
 
   it('should return components after initial load is finished', async () => {
     expect.assertions(1);
-    const component = create(<App />);
+    const component = create(<App {...{ extra_props }} />);
     const instance = component.getInstance();
 
     await instance.getInitialData();
@@ -73,18 +67,18 @@ describe('App component', () => {
 
   it('loads initial data', async () => {
     expect.assertions(1);
-    const component = create(<App />);
+    const component = create(<App {...{ extra_props }} />);
     const instance = component.getInstance();
 
     await instance.getInitialData();
     expect(instance.state.generalConfig).toEqual(
-      NativeModules.ZappPlugin.configuration
+      extra_props.uibuilder_screen_model.data
     );
   });
 
   it('should change switch value on handleSwitchChange', async () => {
     expect.assertions(1);
-    const component = create(<App />);
+    const component = create(<App {...{ extra_props }} />);
     const instance = component.getInstance();
     await instance.getInitialData();
     const switchComponent = component.root.findByType(Switch);
@@ -96,20 +90,19 @@ describe('App component', () => {
   });
 
   it('passes styles config to the switchPanel', async () => {
-    const { configuration } = NativeModules.ZappPlugin;
-    const component = create(<App />);
+    const component = create(<App {...{ extra_props }} />);
     const instance = component.getInstance();
     await instance.getInitialData();
     const switchPanelComponent = component.root.findByType(SwitchPanel);
-    const configKeys = keys(configuration);
-    const unusedConfigFields = ['url', 'backgroundViewColor'];
+    const configKeys = keys(extra_props.uibuilder_screen_model.data);
+    const unusedConfigFields = ['url'];
     const switchPanelConfigProps = compose(
       omit(unusedConfigFields),
       pick(configKeys)
     )(switchPanelComponent.props);
 
     expect(switchPanelConfigProps).toEqual(
-      omit(unusedConfigFields, configuration)
+      omit(unusedConfigFields, extra_props.uibuilder_screen_model.data)
     );
   });
 });
