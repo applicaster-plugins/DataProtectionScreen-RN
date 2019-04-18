@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
-import { getAnalyticsStatus, setAnalyticsStatus } from '../analyticsModule';
+import { getAnalyticsStatus, setAnalyticsStatus } from '../analyticsModule.ios';
 
 jest.mock('NativeModules', () => {
   return {

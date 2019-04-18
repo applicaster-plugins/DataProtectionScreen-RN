@@ -8,7 +8,6 @@ export const getAnalyticsStatus = () =>
       resolve
     );
   });
-
 export const setAnalyticsStatus = analyticsEnabled =>
   new Promise(resolve => {
     NativeModules.ZPReactNativeBridgeListener.postEvent(
