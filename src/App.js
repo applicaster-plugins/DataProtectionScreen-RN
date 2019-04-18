@@ -83,7 +83,6 @@ class App extends Component {
               switchEnabled: analyticsEnabled,
               switchPanelColor,
               switchPanelText,
-              switchPanelPosition,
               switchPanelIosFont,
               switchPanelAndroidFont,
               onTintColor,

@@ -21,7 +21,6 @@ class SwitchPanel extends Component {
     const {
       switchPanelColor,
       switchPanelText,
-      switchPanelPosition,
       switchPanelIosFont,
       switchPanelAndroidFont,
       onTintColor,

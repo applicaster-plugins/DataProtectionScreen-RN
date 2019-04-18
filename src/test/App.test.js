@@ -95,7 +95,7 @@ describe('App component', () => {
     await instance.getInitialData();
     const switchPanelComponent = component.root.findByType(SwitchPanel);
     const configKeys = keys(extra_props.uibuilder_screen_model.data);
-    const unusedConfigFields = ['url'];
+    const unusedConfigFields = ['url', 'switchPanelPosition'];
     const switchPanelConfigProps = compose(
       omit(unusedConfigFields),
       pick(configKeys)
