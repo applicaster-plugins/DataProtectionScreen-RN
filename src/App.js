@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, WebView } from 'react-native';
-import { reverse } from 'ramda';
 import { ErrorBoundary } from '@applicaster/london-rn-components';
 import SwitchPanel from './components/SwitchPanel';
 import { getPluginConfig } from './util/pluginConfigModule';
 import { getAnalyticsStatus, setAnalyticsStatus } from './util/analyticsModule';
-import { conditionalReverse } from './util/general';
+import { conditionalReverse, argbToRgbaConverter } from './util/general';
 
 class App extends Component {
   constructor(props) {
@@ -76,11 +75,10 @@ class App extends Component {
     if (initialLoad) {
       return null;
     }
-
     return (
       <ErrorBoundary>
         <View style={{ flex: 1 }}>
-          {conditionalReverse(switchPanelPosition === 'top', [
+          {conditionalReverse(switchPanelPosition === 'bottom', [
             <SwitchPanel
               key="1"
               {...{
