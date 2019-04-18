@@ -24,55 +24,88 @@
   "deprecated_since_zapp_sdk": "",
   "unsupported_since_zapp_sdk": "",
   "ui_builder_support": true,
+  "screen": true,
   "react_native": true,
   "react_bundle_url": "https://assets-production.applicaster.com/zapp/react-native-bundles/DataProtectionScreen-RN/0_50_4/android/index.android.bundle.js",
   "extra_dependencies": [],
   "npm_dependencies": [],
   "project_dependencies": [],
-  "custom_configuration_fields": [
-    {
-      "label": "URL",
-      "key": "url",
-      "tooltip_text": "URL to data protection website",
-      "type": "text",
-      "placeholder": "Enter URL..."
-    },
-    {
-      "label": "Switch panel text",
-      "key": "switchPanelText",
-      "tooltip_text": "Text to display next to the switch button",
-      "initial_value": "Tracking",
-      "type": "text",
-      "placeholder": "Enter text..."
-    },
-    {
-      "label": "Switch panel text color",
-      "key": "switchPanelTextColor",
-      "label": "Switch panel text color",
-      "initial_value": "#000000",
-      "type": "text"
-    },
-    {
-      "label": "Switch panel size",
-      "key": "switchPanelTextSize",
-      "label": "Switch panel text size",
-      "initial_value": "12",
-      "type": "text"
-    },
-    {
-      "label": "Switch panel color",
-      "key": "switchPanelColor",
-      "label": "Switch panel background color",
-      "initial_value": "#ffffff",
-      "type": "text"
-    },
-    {
-      "label": "Button track color",
-      "key": "buttonTrackColor",
-      "label": "Button track color",
-      "initial_value": "#ffffff",
-      "type": "text"
-    }
-  ],
-  "screen": true
+  "custom_configuration_fields": [],
+  "data": {
+    "fields": [
+      {
+        "label": "URL",
+        "key": "url",
+        "tooltip_text": "URL to data protection website",
+        "type": "text_input",
+        "placeholder": "Enter URL..."
+      },
+      {
+        "label": "Switch panel position",
+        "key": "switchPanelPosition",
+        "initial_value": "top",
+        "type": "tag_select",
+        "options": [
+          { "text": "Top", "value": "top" },
+          { "text": "Bottom", "value": "bottom" }
+        ]
+      },
+      {
+        "label": "Switch panel color",
+        "key": "switchPanelColor",
+        "label": "Switch panel background color",
+        "initial_value": "#ffffff",
+        "type": "color_picker"
+      },
+      {
+        "label": "Switch panel text",
+        "key": "switchPanelText",
+        "tooltip_text": "Text to display next to the switch button",
+        "initial_value": "Tracking",
+        "type": "text_input",
+        "placeholder": "Enter text..."
+      },
+      {
+        "label": "Switch panel text color",
+        "key": "switchPanelTextColor",
+        "initial_value": "#000000",
+        "type": "color_picker"
+      },
+      {
+        "label": "Switch panel text size",
+        "key": "switchPanelTextSize",
+        "label": "Switch panel text size",
+        "initial_value": "15",
+        "type": "number_input"
+      },
+      {
+        "label": "Switch panel ios font",
+        "key": "switchPanelIosFont",
+        "type": "ios_font_selector"
+      },
+      {
+        "label": "Switch panel android font",
+        "key": "switchPanelAndroidFont",
+        "type": "android_font_selector"
+      },
+      {
+        "label": "On tint Color",
+        "key": "onTintColor",
+        "tooltip_text": "Switch background color when on",
+        "type": "color_picker"
+      },
+      {
+        "label": "Off tint Color",
+        "key": "tintColor",
+        "tooltip_text": "Switch background(Android), border(iOS) color when on off.",
+        "type": "color_picker"
+      },
+      {
+        "label": "Thumb tint color",
+        "key": "thumbTintColor",
+        "tooltip_text": "Switch thumb color",
+        "type": "color_picker"
+      }
+    ]
+  }
 }
