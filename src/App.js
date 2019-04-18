@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@applicaster/london-rn-components';
 import SwitchPanel from './components/SwitchPanel';
 import { getPluginConfig } from './util/pluginConfigModule';
 import { getAnalyticsStatus, setAnalyticsStatus } from './util/analyticsModule';
-import { conditionalReverse, argbToRgbaConverter } from './util/general';
+import { conditionalReverse } from './util/general';
 
 class App extends Component {
   constructor(props) {
