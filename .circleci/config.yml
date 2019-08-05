@@ -15,14 +15,14 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - v1-DataProtectionScreen-RN-{{ .Branch }}-{{ .Revision }}
-            - v1-DataProtectionScreen-RN-{{ .Branch }}-
-            - v1-DataProtectionScreen-RN-
+            - v2-DataProtectionScreen-RN-{{ .Branch }}-{{ .Revision }}
+            - v2-DataProtectionScreen-RN-{{ .Branch }}-
+            - v2-DataProtectionScreen-RN-
 
       - checkout
 
       - save_cache:
-          key: v1-DataProtectionScreen-RN-{{ .Branch }}-{{ .Revision }}
+          key: v2-DataProtectionScreen-RN-{{ .Branch }}-{{ .Revision }}
           paths:
             - .git
 
@@ -32,14 +32,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-npm-{{ checksum "yarn.lock" }}
+            - v2-npm-{{ checksum "yarn.lock" }}
 
       - run:
           name: Install npm dependencies
           command: yarn
 
       - save_cache:
-          key: v1-npm-{{  checksum "yarn.lock" }}
+          key: v2-npm-{{  checksum "yarn.lock" }}
           paths:
             - node_modules
 
