@@ -54,10 +54,18 @@
     "@storybook/addon-links": "^3.4.8",
     "@storybook/addons": "^3.4.8",
     "@storybook/react-native": "^3.4.8",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-es2016": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-cli": "^6.26.0",
-    "babel-jest": "^21.2.0",
-    "babel-preset-react-native": "^5.0.1",
-    "babel-register": "^6.18.0",
+    "babel-loader": "^8.0.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-jest": "^23.6.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-babel": "^4.0.0",
@@ -70,7 +78,7 @@
     "react-dom": "^16.4.1",
     "react": "16.8.3",
     "react-native": "0.59.10",
-    "react-native-zapp-bridge": "1.0.3",
+    "react-native-zapp-bridge": "2.7.2",
     "react-test-renderer": "^16.8.6",
     "reactotron-react-js": "^1.12.2",
     "reactotron-redux": "^1.12.2",
@@ -78,14 +86,16 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "react-native-zapp-bridge": "*"
+    "react-native": "*"
   },
   "jest": {
     "verbose": true,
     "preset": "react-native",
     "transformIgnorePatterns": [
       "/node_modules//@applicaster/(?!london-rn-components).+\\.js$"
-    ]
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   }
 }
